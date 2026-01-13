@@ -26,6 +26,9 @@ It provides a generic environment for:
 * First contribution to the SMESH module using python
 * First big job on a specific plugin in the SMESH module
 
+## 📂 Detailed Documentation
+* [Click here to view Year 1 Details (2025-2026)](CEA2025-2026.md)
+
 ## 💻 Technical Stack
 | Category | Technologies |
 | **Languages** | Python, C++, Bash |
