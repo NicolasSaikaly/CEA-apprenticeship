@@ -17,7 +17,7 @@ It provides a generic environment for:
 * CAD modeling (GEOM / SHAPER)
 * MESH generation (SMESH)
 * Calculation scheme management
-* Visualization
+* Visualization (PARAVIS)
 
 ## 📈 Roadmap
 
@@ -33,3 +33,8 @@ It provides a generic environment for:
 | **Tools** | Git, CMake |
 | **Environment** | Linux (Ubuntu) |
 
+🔒 Confidentiality Notice
+This repository contains a general overview of my apprenticeship and public-facing developments. Any proprietary code or sensitive data related to CEA projects are strictly excluded according to the company's security policy.
+
+📫 Contact
+Nicolas SAIKALY - www.linkedin.com/in/nicolas-saikaly-8a787935a - nicolas.saikaly@cea.fr | nicolas.saikaly@universite-paris-saclay.fr
