@@ -7,17 +7,17 @@ My work focuses on the development and optimization of the SALOME platform
 * Company : CEA Paris-Saclay DES/ISAS/DM2S/SGLS/LESIM
 * Role : Software engineering apprentice
 * Debut : 01/09/2025
-* Core technology : SALOME platform  (Open-source integration platform )
+* Core technology : SALOME platform https://www.salome-platform.org/?lang=fr (Open-source integration platform )
 
 ---
 
 ## 🛠 Project context : The SALOME platform
 SALOME is an open-source middleware used for pre and post processing in numerical simulation.
 It provides a generic environment for:
-* CAD modeling (GEOM / SHAPER)
-* MESH generation (SMESH)
+* CAD modeling (GEOM https://docs.salome-platform.org/latest/gui/GEOM/index.html/ SHAPER https://docs.salome-platform.org/latest/gui/SHAPER/General/Introduction.html)
+* MESH generation (SMESH https://docs.salome-platform.org/latest/gui/SMESH/smesh_module.html)
 * Calculation scheme management
-* Visualization (PARAVIS)
+* Visualization (PARAVIS https://docs.salome-platform.org/latest/dev/PARAVIS/index.html)
 
 ## 📈 Roadmap
 
