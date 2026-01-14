@@ -1,11 +1,10 @@
-<p align="center">
-  <img src="logoCEA.png" height="100" align="left" />
-  <img src="logoSalome.gif" height="100" />
-  <img src="logopolytech.webp" height="100" align="right" />
-</p>
-<br clear="all" />
-<br clear="all" />
-<br clear="all" />
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <img src="logoCEA.png" height="80" />
+  <img src="logoSalome.gif" height="80" style="max-width: 40%; object-fit: contain;" />
+  <img src="logopolytech.webp" height="80" />
+</div>
+
+<br />
 # 3-Year Apprenticeship at CEA Paris-Saclay | SALOME platform development
 
 Welcome to this repository documenting my 3-year apprenticeship at CEA (Commissariat à l'énergie atomique et aux énergies alternatives)
