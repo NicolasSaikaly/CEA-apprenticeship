@@ -1,8 +1,16 @@
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <img src="logoCEA.png" height="80" />
-  <img src="logoSalome.gif" height="80" style="max-width: 40%; object-fit: contain;" />
-  <img src="logopolytech.webp" height="80" />
-</div>
+<table width="100%" border="0">
+  <tr>
+    <td width="33%" align="left">
+      <img src="logoCEA.png" height="100">
+    </td>
+    <td width="33%" align="center">
+      <img src="logoSalome.gif" height="100">
+    </td>
+    <td width="33%" align="right">
+      <img src="logopolytech.webp" height="100">
+    </td>
+  </tr>
+</table>
 
 <br />
 # 3-Year Apprenticeship at CEA Paris-Saclay | SALOME platform development
