@@ -1,8 +1,9 @@
 <p align="center">
-  <img src="logoCEA.png" height="120" align="left" />
-  <img src="logoSalome.gif" height="120" width="700"/>
-  <img src="logopolytech.webp" height="120" align="right" />
+  <img src="logoCEA.png" height="100" align="left" />
+  <img src="logoSalome.gif" height="100" />
+  <img src="logopolytech.webp" height="100" align="right" />
 </p>
+<br clear="all" />
 <br clear="all" />
 <br clear="all" />
 # 3-Year Apprenticeship at CEA Paris-Saclay | SALOME platform development
