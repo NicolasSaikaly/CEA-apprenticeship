@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="logoCEA.png" width="120" alt="CEA Logo" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="logopolytech.webp" width="220" alt="Polytech Logo" />
+  <img src="logoCEA.png" width="120" align="left" />
+  <img src="logopolytech.webp" width="220" align="right" />
 </p>
+<br clear="all" />
 # 3-Year Apprenticeship at CEA Paris-Saclay | SALOME platform development
 
 Welcome to this repository documenting my 3-year apprenticeship at CEA (Commissariat à l'énergie atomique et aux énergies alternatives)
