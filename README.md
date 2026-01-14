@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="logoCEA.png" height="80" align="left" />
-  <img src="logopolytech.webp" height="80" align="right" />
+  <img src="logoCEA.png" height="120" align="left" />
+  <img src="logopolytech.webp" height="120" align="right" />
 </p>
 <br clear="all" />
 <br clear="all" />
