@@ -1,6 +1,6 @@
 <div style="display: flex; justify-content: space-between; align-items: center;">
   <img src="logoCEA.png" height="80" align="left" />
-  <img src="logoSalome.gif" height="80" align="center" style="max-width: 40%; object-fit: contain;" />
+  <img src="logoSalome.gif" height="80" style="max-width: 40%; object-fit: contain;" />
   <img src="logopolytech.webp" height="80" align="right"/>
 </div>
 
