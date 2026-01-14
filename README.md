@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Logo_CEA.svg" width="100" />
+  <img src="images/logoCEA.png" width="120" alt="CEA Logo" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Logo_Polytech_Paris-Saclay.png" width="200" />
+  <img src="images/logopolytech.webp" width="220" alt="Polytech Logo" />
 </p>
 # 3-Year Apprenticeship at CEA Paris-Saclay | SALOME platform development
 
