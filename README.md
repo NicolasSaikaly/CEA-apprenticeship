@@ -40,10 +40,15 @@ It provides a generic environment for:
 * [Click here to view Year 1 Details (2025-2026)](CEA2025-2026.md)
 
 ## 💻 Technical Stack
+
 | Category | Technologies |
+
 | **Languages** | Python, C++, Bash |
+
 | **Libraries** | Qt, VTK, Open CASCADE, salome |
+
 | **Tools** | Git, CMake |
+
 | **Environment** | Linux (Ubuntu) |
 
 🔒 Confidentiality Notice
