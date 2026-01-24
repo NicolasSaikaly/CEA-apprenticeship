@@ -51,10 +51,10 @@ It provides a generic environment for:
 
 | **Environment** | Linux (Ubuntu) |
 
-🔒 Confidentiality Notice
+# 🔒 Confidentiality Notice
 
 This repository contains a general overview of my apprenticeship and public-facing developments. Any proprietary code or sensitive data related to CEA projects are strictly excluded according to the company's security policy.
 
-📫 Contact
+# 📫 Contact
 
 Nicolas SAIKALY - www.linkedin.com/in/nicolas-saikaly-8a787935a - nicolas.saikaly@cea.fr | nicolas.saikaly@universite-paris-saclay.fr
