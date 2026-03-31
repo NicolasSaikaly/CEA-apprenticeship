@@ -34,6 +34,9 @@ La dernière fonctionnalité que j'ai développée sur ce plugin concerne l'int�
 ## Slide 10 : intéret scientifique et cas d'usage
 Avant de passer au deuxième plugin, je voulais prendre un moment pour illuster concrètement la valeur scientifique de ce plugin. La première image montre un maillage volumique obtenu après une opération d'intersection entre une surface cylindrique et des agrégats de béton représentés en bleu clair. Le maillage est coupé pour permettre de visualiser les volumes intérieurs. Ce types de simulation est utilisé pour modéliser le comportement mécanique du béton, un matériau composite où les agrégats jouent un role crucial. La deuxième image montre un exemple similaire appliqué cette fois à des cellules de lithium, avec les différents composants colorés individuellement pour les distinguer, le genre de simulation qui intervient dans la recherche sur les batteries. Dans les deux cas, on le faisait avant avec MG cleaner qui permet de faire le cut et enlever les dépassement si c'est le cas. Maintenant, on peut simplifier cette démarche en remplaçant une partie de ce que faisait MG cleaner par une opération booléenne, et c'est ce qui donne du sens aux améliorations techniques que je viens de vous présenter.
 
+## SLide 11 : Transition et lancement semestre 2
+Au terme du premier semestre, le meshbooleanplugin est passé d'un outil discret à un plugin complet, testable et maintenable, meme si au cours du deuxième semèstre je me rend compte que j'aurai pu mieux faire. Pour le seconde semèstre, on m'a confié une nouvelle mission: prendre en charge le développement du polymeshplugin, un projet intié par un stagiaire. Comme son nom l'indique, ce plugin transforme un maillage quelconque en maillage polyhédrique, une opération très utile pour certains types de simulations numériques. 
+
 
 
 
