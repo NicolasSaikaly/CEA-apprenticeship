@@ -1,25 +1,19 @@
-#Discours de soutenance visite en entreprise du 13 avril
-# Discours de soutenance – Bilan d'apprentissage Année 1
-**Nicolas SAIKALY – CEA SGLS/LESIM – SALOME Platform**
+# Discours de soutenance – Bilan d'apprentissage année 1
+# Visite en entreprise du 13 avril
+**Nicolas SAIKALY – CEA SGLS/LESIM – SALOME platforme**
 **Durée cible : 20 minutes**
-
----
-
-> 💡 **Conseil général** : parle lentement, regarde le jury, et ne lis pas tes slides — utilise ce discours comme guide, pas comme script mot pour mot.
-
----
 
 ## SLIDE 1 — Page de titre
 **⏱ ~30 secondes**
 
-Bonjour à tous. Je m'appelle Nicolas Saikaly, je suis en première année d'apprentissage à Polytech Paris-Saclay, au sein du laboratoire LESIM du CEA. Cette année, j'ai travaillé sur la plateforme SALOME, et c'est ce travail que je vais vous présenter aujourd'hui.
+Bonjour à tous. Je suis Nicolas SAIKALY, on se réunit aujourd'hui pour faire le bilan de ma première année d'apprentissage qui a débuté en Septembre dans le service de génie logiciel au CEA. Je vais vous présenter le travail accompli pendant ce temps, plus exactement pendant 14 semaines de travail. Mon sujet porte sur le développement de la plateforme SALOME et je suis encadré par Christophe et Afeef.
 
 ---
 
 ## SLIDE 2 — Agenda
 **⏱ ~30 secondes**
 
-Pour structurer cette présentation, je vais commencer par vous donner le contexte de mon apprentissage et de la plateforme SALOME. Ensuite, je vous présenterai mes contributions du premier trimestre sur le MeshBooleanPlugin, puis celles du second trimestre sur le PolyMeshPlugin. Je terminerai par un bilan et les perspectives pour la suite.
+Pour structurer cette présentation, je vais commencer par vous donner le contexte de mon apprentissage en présentant le CEA par ce que c'est demandé dans la soutenance de fin d'année et la plateforme SALOME. Puis je vais parler des travaux accomplis pendant le premier trimestre notamment sur le meshbooleanplugin, puis pendant le deuxième avec le polymeshplugin, et je terminerai par une conclusion et des potentiels futurs travaux.
 
 ---
 
@@ -31,37 +25,37 @@ Pour structurer cette présentation, je vais commencer par vous donner le contex
 ## SLIDE 4 — Le CEA
 **⏱ ~1 minute**
 
-Mon apprentissage se déroule au CEA, le Commissariat à l'Énergie Atomique et aux Énergies Alternatives. C'est un organisme de recherche public fondé en 1945, qui compte environ 20 000 employés répartis sur plusieurs sites en France. Il intervient dans des domaines comme l'énergie nucléaire, la défense et les technologies numériques.
+Donc petite présentation du CEA, le Commissariat à l'Énergie Atomique et aux Énergies Alternatives. C'est un organisme de recherche public fondé en 1945, qui compte environ 20 000 employés répartis sur plusieurs sites en France. Il intervient dans des domaines comme l'énergie nucléaire, la défense et les technologies numériques.
 
-Mon laboratoire d'accueil s'inscrit dans une chaîne hiérarchique assez longue : je suis rattaché à la Direction des Énergies, plus précisément à l'ISAS — l'Institut des sciences appliquées et de la simulation pour les énergies bas carbone — au sein du Service de Génie Logiciel, dans le Laboratoire Environnement de Simulation, le LESIM.
+Mon laboratoire d'accueil s'inscrit dans une chaîne hiérarchique assez longue : je fais partie du laboratoire environnement de simulation le LESIM dans le service de génie logiciel pour la simulation.
 
-C'est un laboratoire orienté développement logiciel scientifique, qui développe et maintient des plateformes open source majeures comme SALOME, mais aussi des projets classifiés.
+C'est un laboratoire orienté développement logiciel scientifique, qui développe et maintient des projets open source majeurs dont fait partie SALOME, mais aussi des projets européens et confidentiels.
 
 ---
 
 ## SLIDE 5 — Simulations numériques au CEA
 **⏱ ~1 minute**
 
-Au CEA, la simulation numérique est centrale. Elle permet de remplacer des expériences physiques coûteuses ou dangereuses — en nucléaire, en mécanique des fluides, en thermique... Les images que vous voyez à l'écran illustrent concrètement ces simulations : lignes de courant, champs de pression, structures complexes en 3D.
+Donc, comme je viens de le dire, un grand travail d'ingénierie logiciel se fait au CEA, la simulation numérique est centrale. Elle permet de remplacer des expériences physiques coûteuses ou dangereuses — en nucléaire, en mécanique des fluides, en thermique... Pour illustrer un peu ces simulations,j'ai mis ces images ou on peut voir, la visualisation de ligne de courant, champ de pression, simulation d'ecoulement de goutte d'eau, une simulation HPC sur un réacteur nucléaire et plein d'autres.
 
-Pour que ces simulations soient possibles, il faut des outils de **pré-traitement** — pour préparer la géométrie et le maillage — et de **post-traitement** — pour analyser les résultats. C'est précisément le rôle de SALOME.
+Pour rendre ces simulations possibles, il faut des outils de **pré-traitement** — pour préparer la géométrie et le maillage — et de **post-traitement** — pour analyser les résultats. Donc ici au CEA on utilise un outil qui s'appelle SALOME et ça en vient au coeur de mon sujet.
 
 ---
 
 ## SLIDE 6 — SALOME – Vue d'ensemble
 **⏱ ~1 min 30**
 
-SALOME est une plateforme de simulation numérique développée depuis 2000, co-maintenue par le CEA et EDF, et disponible en open source depuis 2016. Elle offre des fonctionnalités de création de géométrie, de maillage et de visualisation. Son architecture modulaire permet de l'étendre via des plugins.
+La plateforme SALOME c'est quoi? SALOME est une plateforme de simulation numérique développée depuis 2000, par le CEA et EDF et un autre partenaire qui s'appelle opencascade qui se charge plutot de la partie dev, et disponible en open source depuis 2016. Elle se base sur une architecture en module qui permet de faire le pre et post traitement, avec des modules de geometrie CAO, de maillage et de visualisation.
 
-Elle est utilisée dans de nombreux contextes : formation en ingénierie numérique, recherche fondamentale en mécanique des fluides et des solides, et dans des secteurs industriels comme l'énergie, la marine, l'aéronautique ou l'automobile.
+Elle est utilisée dans de nombreux contextes académiques et industriels : formation en ingénierie numérique, recherche fondamentale en mécanique des fluides et des solides, et dans des secteurs industriels comme l'énergie, la marine, l'aéronautique ou l'automobile.
 
-Ma mission dans cette équipe : je suis apprenti ingénieur au LESIM, et je travaille principalement sur le module **SMESH** — le module de maillage de SALOME. Mon travail consiste à développer et moderniser deux plugins : le **MeshBooleanPlugin** et le **PolyMeshPlugin**.
+Ma mission dans cette équipe : je suis apprenti ingénieur au LESIM, et mon travail jusqu'à présent c'est principalement basé dans le module **SMESH** — le module de maillage de SALOME ou j'ai développé et modernisé deux plugin, le meshbooleanplugin et le polymeshplugin.
 
 ---
 
 ## SLIDE 7 — Section 2 : Premier trimestre
 *(slide de transition)*
-
+Donc on va passer au travaux accompli pendant le premier trimestre en commençant par le meshbooleanplugin
 ---
 
 ## SLIDE 8 — MeshBooleanPlugin – Vue d'ensemble
@@ -69,13 +63,13 @@ Ma mission dans cette équipe : je suis apprenti ingénieur au LESIM, et je trav
 
 Le MeshBooleanPlugin permet d'effectuer des opérations booléennes entre deux maillages — c'est-à-dire calculer leur union, leur intersection ou leur différence — et d'importer le résultat directement dans SALOME.
 
-Techniquement, il repose sur du Python pour la logique et l'interface graphique en PyQt, et des algorithmes en C++ pour le calcul. Il est hébergé sur GitHub et doit fonctionner aussi bien sur Linux que sur Windows.
+Techniquement, il repose sur du Python pour la logique et l'interface graphique en PyQt, et des algorithmes en C++ pour le calcul comme on peut le voir sur le count loc juste ici. Il est hébergé sur GitHub et doit fonctionner aussi bien sur Linux que sur Windows.
 
-Quand j'ai pris le plugin en charge, voici l'état dans lequel il se trouvait :
-- Il était caché dans le menu, sans icône visible.
-- Si on lançait un calcul, il était impossible de l'arrêter — il fallait tuer SALOME entièrement ou attendre la fin.
+Quand j'ai pris le plugin en charge :
+- Il était caché dans le menu du module SMESH en haut, sans icône visible.
+- Si l'utilisateur lançait un calcul, il était impossible de l'arrêter — il fallait tuer SALOME entièrement ou attendre la fin.
 - La logique algorithmique et l'interface graphique étaient mélangées dans le même code.
-- Il n'y avait ni API Python exposée, ni intégration avec le "dump study" de SALOME.
+- Il n'y avait ni d'API Python, ni intégration avec le "dump study" de SALOME.
 
 Mon travail a consisté à corriger tout ça.
 
@@ -84,7 +78,7 @@ Mon travail a consisté à corriger tout ça.
 ## SLIDE 9 — Types d'opérations booléennes
 **⏱ ~45 secondes**
 
-Avant d'entrer dans les détails techniques, voici une illustration concrète de ce que fait le plugin. On part de deux maillages qui se chevauchent — ici deux cubes partiellement superposés. On peut alors calculer leur **union** — les deux réunis en un seul maillage —, leur **intersection** — uniquement la partie commune —, ou leur **différence** — l'un soustrait de l'autre. Ces opérations sont fondamentales dans les workflows de simulation numérique.
+Avant d'entrer dans les détails techniques, je vais vous montrer une illustration concrète de ce que fait le plugin. On part dans cet exemple de deux maillage tetra simple, deux cubes partiellement superposés. On peut alors calculer leur **union** — les deux réunis en un seul maillage —, leur **intersection** — uniquement la partie commune —, ou leur **différence** — l'un soustrait de l'autre qui peut donner un différent résultat en fonction de comment les deux maillages sont choisis. En l'occurence ici, si on inversait le choix des maillage, on aurait eu ça.
 
 ---
 
