@@ -119,7 +119,8 @@ Un manque aussi de ce plugin était la non gestion des fichiers temporaires. Fai
 ## SLIDE 12 — Exemples
 **⏱ ~30 secondes**
 
-Voici deux illustrations concrètes : à gauche, les tests unitaires qui tournent en terminal en configurant simplement le contexte SALOME — 15 sous-tests, exécutés en 13 secondes, résultat OK. À droite, l'API appelée directement en Python interactif, sans interface graphique.
+Donc pour illuster ça on peut voir que le script de test peut etre lancé en terminal en faisant SALOME context, dans mon cas j'ai un algo qui n'est présent, donc j'ai 5 algos avec 3 opérations booléennes ce qui fait 15 sub test.
+Et c'est aussi le cas pour l'API ou on peut faire une opération booléenne directement en terminal et on remarque à la fin que l'Union a bien réussi avec le fichier .med en sortie et le dossier temporaire effacé.
 
 ---
 
