@@ -210,7 +210,7 @@ Le layer Python n'a plus qu'à importer ce fichier `.med` nativement. Résultat 
 ## SLIDE 20 — Cas test avec Geogram
 **⏱ ~30 secondes**
 
-Voici un exemple concret sur une géométrie type "coude de tuyau". À gauche, le maillage tétraédrique de départ. À droite, après application de Geogram avec export des seeds, le maillage polyédrique obtenu — où chaque point seed devient le centre d'une cellule, ce qui permet de conserver le même niveau de raffinement que dans le maillage tétraédrique d'origine.
+Voici un exemple concret sur une géométrie type pipe. Geogram contient une option export seeds qui permet de garder le meme rafinement dans le maillage poly que dans le maillage tetra en faisant de chaque point seed le centre d'une nouvelle cellule générée. À gauche, le maillage tétraédrique de départ. À droite,le maillage obtenu après application de Geogram avec export des seeds, moi j'ai affiché les deux maillage de manière superposée pour voir comment chaque point seed est le centre des nouvelles cellules.
 
 ---
 
@@ -222,14 +222,15 @@ Voici un exemple concret sur une géométrie type "coude de tuyau". À gauche, l
 ## SLIDE 22 — Bilan & Perspectives
 **⏱ ~2 minutes**
 
-Pour conclure, cette première année m'a permis de progresser sur plusieurs plans.
+Pour conclure, ce que je retiens de cette année, qui n'est pas encore fini et pour moi le plus grand travail reste à venir, mais je suis très satisfait de la progression qui a été faite.
+
+**Sur le plan personnel** : j'ai gagné en autonomie sur Linux, arrivant ici ne sachant rien faire, j'ai également profité d'une formation C++ scientifique moderne de 21 heures dispensée par le CNRS, et j'ai appris en continu tout au long de l'année.
 
 **Compétences techniques acquises** : développement d'interfaces graphiques avec PyQt, architecture logicielle et conception d'API, intégration Python/C++, qualité de code avec les tests unitaires, Pylint et le rebase Git.
 
-**Croissance personnelle** : j'ai gagné en autonomie sur Linux, j'ai suivi une formation C++ scientifique moderne de 21 heures au CNRS, et j'ai appris en continu tout au long de l'année.
 
 **Statut des pull requests** :
-- MeshBooleanPlugin : **mergé dans master**.
+- MeshBooleanPlugin : **mergé dans master** mes changement seront intégré dans la prochaine version de SALOME.
 - PolyMeshPlugin : **en attente de merge**, sans conflits.
 
 **Perspectives pour l'année 2** :
