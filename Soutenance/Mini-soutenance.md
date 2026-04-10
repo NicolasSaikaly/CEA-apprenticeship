@@ -127,6 +127,7 @@ Et c'est aussi le cas pour l'API ou on peut faire une opération booléenne dire
 ## SLIDE 13 — Intégration Dump Study
 **⏱ ~1 min 30**
 
+J'ai parlé tout à l'heure du fait que SALOME peut etre utilisé avec des scripts python. L'integration de ce plugin dans le dump study renforce encore plus cette capacité
 Le **dump study** est une fonctionnalité de SALOME qui enregistre automatiquement toutes les actions de l'utilisateur dans l'interface graphique sous forme de script Python — ce qui permet de rejouer des opérations sans interaction manuelle.
 
 Le problème : les exports de fichiers intermédiaires que faisait le plugin parasitaient ce script généré, le rendant inutilisable tel quel.
