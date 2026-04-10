@@ -199,9 +199,9 @@ J'ai également ajouté : une boîte de chargement après le calcul pour que l'u
 ## SLIDE 19 — Geogram – Refonte architecturale
 **⏱ ~2 minutes**
 
-Maintenant la tache dont je suis le plus fièr dans ce second trimestre. L'algorithme geogram du polymeshplugin passait deux étapes. Le fichier produit par l'algorithme était d'abord converti en `.ovm`, puis parsé par des centaines de lignes de Python fragile, avant d'être importé dans SALOME. C'était lent, instable et difficile à maintenir. Donc on m'a demandé d'améliorer cela en abandonnant le format .ovm pour le format .geogram (binaire).
+Maintenant la tache dont je suis le plus fièr dans ce second trimestre. L'algorithme geogram du polymeshplugin passait deux étapes. Le fichier produit par l'algorithme était d'abord converti en `.ovm`, puis parsé par des centaines de lignes de Python fragile, avant d'être importé dans SALOME. C'était lent, instable et difficile à maintenir. Donc on m'a demandé d'améliorer cela en abandonnant le format .ovm pour le format .geogram binaire natif.
 
-Donc j'ai développé un **exécutable C++ dédié** appelé `geogram2med`. Il lit le fichier `.geogram` directement via la bibliothèque Geogram, extrait les coordonnées des nœuds dans un tableau MEDCoupling, regroupe les facettes 2D par attribut `cell_id`, reconstruit les polyèdres 3D avec la norme `NORM_POLYHED`, calcule la surface 2D du volume, et exporte directement en `.med`.
+Donc j'ai développé un **exécutable C++ dédié** appelé `geogram2med`. Il repose sur deux bibliothèques principales : Geogram pour lire le fichier de maillage, et MEDCoupling — la bibliothèque C++ du CEA — pour construire et exporter le maillage au format .med que SALOME comprend nativement.extrait les coordonnées des nœuds dans un tableau MEDCoupling, regroupe les facettes 2D par attribut `cell_id`, reconstruit les polyèdres 3D avec la norme `NORM_POLYHED`, calcule la surface 2D du volume, et exporte directement en `.med`.
 
 Le layer Python n'a plus qu'à importer ce fichier `.med` nativement. Résultat : des centaines de lignes de Python fragile supprimées, un pipeline plus rapide, stable et maintenable.
 
