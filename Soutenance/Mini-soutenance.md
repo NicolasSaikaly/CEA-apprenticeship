@@ -130,59 +130,69 @@ Et c'est aussi le cas pour l'API ou on peut faire une opération booléenne dire
 J'ai parlé tout à l'heure du fait que SALOME peut etre utilisé avec des scripts python. L'integration de ce plugin dans le dump study renforce encore plus cette capacité
 Le **dump study** est une fonctionnalité de SALOME qui enregistre automatiquement toutes les actions de l'utilisateur dans l'interface graphique sous forme de script Python — ce qui permet de rejouer des opérations sans interaction manuelle.
 
-Le problème : les exports de fichiers intermédiaires que faisait le plugin parasitaient ce script généré, le rendant inutilisable tel quel.
+On avait un petit problème dans le dump qui enregistrait des imports et faisait des lignes de codes inutiles, ce qui rendait le script inutilisable.
 
-Ma contribution : j'ai mis en pause l'enregistrement pendant ces étapes intermédiaires, et j'injecte directement des appels API propres dans le dump. Résultat : les actions de l'interface sont maintenant enregistrées comme des commandes API lisibles et rejouables. Cela **comble le fossé entre la GUI et l'API Python**, et rend le plugin utilisable dans des workflows d'automatisation.
+Donc j'ai mis en pause l'enregistrement pendant ces étapes intermédiaires et j'injecte directement des appels API propres dans le dump. Résultat : les actions de l'interface sont maintenant enregistrées comme des commandes API lisibles et rejouables. Cela **augmente l'independance entre le GUI et python API** et permet donc à l'utilisateur de jouer avec le script et le relancer comme il le souhaite.
+Comme on peut le voir ici un extrait d'un dump study que j'ai fait ou on remarque 3 opérations booléennes que j'ai fait dans l'interface bien enregistrés comme commandes python, et on remarque le .GetMesh fait automatiquement sur des objets SALOME, et sur le intersection_1 on le voit pas car c'est déja un objet python.
 
 ---
 
 ## SLIDE 14 — Cas d'usage scientifiques
 **⏱ ~1 minute**
 
-Les opérations booléennes sur les maillages répondent à un besoin réel en simulation numérique. Elles sont particulièrement utiles quand il n'existe pas de modèle CAO disponible — par exemple avec des données tomographiques. L'idée est qu'elles remplacent partiellement ce que fait l'outil commercial MG-Cleaner.
+Passons aux cas d'usage scientifiques, pourquoi fait on des opérations booléennes sur maillage? Les opérations booléennes sur les maillages répondent à un besoin réel en simulation numérique. Elles sont particulièrement utiles quand il n'existe pas de modèle CAO disponible — par exemple avec des données tomographiques. L'idée ici est de voir comment on peut intégrer les opérations booléennes à la place d'une partie de ce que fait l'outil commercial MG-Cleaner.
 
-Deux exemples concrets développés cette année :
-- **Batteries lithium-ion** : opérations booléennes entre les composants d'une cellule, chacun coloré et identifié individuellement pour des simulations de stockage d'énergie.
-- **Béton et agrégats** : intersection d'un maillage surfacique cylindrique avec des agrégats de béton, pour modéliser le comportement mécanique de matériaux composites — la coupe permet de visualiser le volume intérieur.
+Deux exemples concrets ou ça pourrait etre utiles :
+- **Batteries lithium-ion** : On peut faire ici des opérations booléennes entre les composants d'une cellule, qui sont chacun coloré et identifié individuellement pour des simulations de stockage d'énergie.
+- **Béton et agrégats** : Ou encore dans l'intersection d'un maillage surfacique cylindrique avec des agrégats de béton, pour modéliser le comportement mécanique de matériaux composites. Ici on fait le clipping pour visualiser le volume intérieur.
 
 ---
 
 ## SLIDE 15 — Section 3 : Deuxième trimestre
 *(slide de transition)*
+Passons maintenant au travaux accomplis pendant le deuxième trimestre avec le polymeshplugin.
 
 ---
 
 ## SLIDE 16 — PolyMeshPlugin – Vue d'ensemble
 **⏱ ~1 minute**
 
-Le PolyMeshPlugin est le second plugin sur lequel j'ai travaillé. Son rôle : transformer n'importe quel maillage en **maillage polyédrique**. Il intègre trois algorithmes C++ : Polydual, Geogram et cfMesh, chacun produisant un type différent de maillage polyédrique.
+Le PolyMeshPlugin est le second plugin sur lequel j'ai travaillé. Son rôle est de transformer n'importe quel maillage en **maillage polyédrique**. Il intègre trois algorithmes C++ : Polydual, Geogram et cfMesh, chacun produisant un type différent de maillage polyédrique. Les deux algos polydual et Cfmesh se basent sur la librairie OpenFoam, geogram sur la librairie geogram avec l'api vorpalite.
 
-Techniquement, l'architecture est similaire : Python, PyQt, C++, GitHub, Linux et Windows.
+Techniquement, l'architecture est similaire : Python, PyQt, C++, GitHub en interne pour le moment, les changements seront inclus avec la prochaine sortie de SALOME master, et bien evidemment compatible Linux et Windows.
 
-Quand j'ai pris la suite d'un stage de 5 mois :
-- La méthode `wexpect/pexpect` utilisée ne fonctionnait pas correctement sur Windows.
-- L'interface se figeait après un calcul.
-- Il n'y avait pas de gestion d'erreur propre.
+Donc c'était un travail initié par un stagiaire de 5 mois :
+La méthode wexpect /pexpect utilisait avait des complications d'utilisations sur windows
+L'interface se figeait après un calcul.
+Il n'y avait pas de gestion d'erreur propre.
 
 ---
 
 ## SLIDE 17 — Avantage du maillage polyédrique
 **⏱ ~1 minute**
 
-Pourquoi s'intéresser aux maillages polyédriques ? Parce qu'ils représentent **un bon compromis** entre les maillages tétraédriques — faciles à générer mais moins précis en CFD — et les maillages hexaédriques — plus précis mais très difficiles à générer sur des géométries complexes.
 
-Concrètement : pour un même niveau de convergence en simulation CFD, le maillage polyédrique nécessite environ **deux fois moins d'itérations** que le tétraédrique, tout en ayant un nombre de cellules bien inférieur. Il offre une meilleure orthogonalité et s'adapte mieux aux géométries complexes.
+Avant d'entrer des le travail technique, j'aimerai rapidement aborder l'interet des maillages polyhédriques.
+Pourquoi s'intéresser aux maillages polyédriques ?Car ils permettent un calcul plus rapide avec un nombre de cellule plus bas. Je vais vous montrer ici des statistiques que j'ai tiré d'une étude qui compare différents types de maillage.
+Le maillage polyhédrique est dérivé du maillage tetra directement en formant des polygones autour de chaque noeuds du maillage tetra.
+Donc pour ces deux maillages, on remarque le nombre d'éléments volumiques à peu près 5 fois plus petit dans un maillage poly que dans un maillage tetra. Ce qui revient à ce que je viens de dire, un calcul plus rapide.
+
+Autre point, on a une meilleur orthogonalité, donc une marge d'erreur plus petite. Ils prouvent aussi etre meilleurs sur des geométrie complexes.
+
+Donc on peut dire qu'ils représentent **un bon compromis** entre les maillages tétraédriques — faciles à générer mais moins précis en CFD — et les maillages hexaédriques — plus précis mais très difficiles à générer sur des géométries complexes.
+
+Concrètement : pour un même niveau de convergence en simulation CFD, le maillage polyédrique nécessite environ **deux fois moins d'itérations** que le tétraédrique, tout en ayant un nombre de cellules bien inférieur. 
 
 ---
 
 ## SLIDE 18 — Refactoring cross-platform
 **⏱ ~1 min 30**
 
-Premier chantier : remplacer `wexpect/pexpect` par `subprocess`, la bibliothèque standard Python. Même comportement sur Linux et Windows, sans script d'installation supplémentaire.
+Maintenant, ce que j'ai fait techniquement dans ce plugin c'est premièrement rendre l'utilisation sur windows encore plus simples. En remplaçant la méthode wexpect/pexpect qui nécessitait un script post install sur windows pour marcher par la méthode que subprocess que j'avais utilisé pour le meshbooleanplugin. Une méthode déja testé et que je connais. Donc résultat meme comportement sur linux et windows sans script d'installation supplémentaire.
 
-Deuxième amélioration : une **barre de progression en temps réel**. J'ai mis en place une lecture caractère par caractère de la sortie du processus — le buffer est vidé à chaque espace ou retour à la ligne, analysé pour extraire le pourcentage d'avancement, et chaque étape de l'algorithme déclenche une mise à jour visuelle.
+Deuxième amélioration : avec l'ancienne méthode on avait une **barre de progression en temps réel**. En passant à subprocess, reproduire cela n'était pas aussi simple. J'ai mis en place une lecture caractère par caractère de la sortie du processus que je stock dans un buffer, le buffer est vidé à chaque espace ou retour à la ligne, analysé pour extraire le pourcentage d'avancement, et chaque étape de l'algorithme déclenche une mise à jour visuelle.
 
-J'ai également ajouté : une boîte de chargement post-calcul pour que l'utilisateur sache toujours ce qu'il se passe, une gestion explicite des erreurs de cfMesh avec un message clair si le maillage est vide, et des avertissements en cas de transfert partiel de groupes — au lieu d'un échec silencieux.
+J'ai également ajouté : une boîte de chargement après le calcul pour que l'utilisateur sache que l'opération est finie et le fichier .med est en train de se charger dans l'object browser de SALOME. j'ai aussi implémenté une gestion explicite des erreurs de cfMesh avec un message clair si le maillage est vide. En lisant le fichier point généré par l'opération, et des avertissements en cas de transfert partiel de groupes — au lieu d'un échec silencieux.
 
 ---
 
