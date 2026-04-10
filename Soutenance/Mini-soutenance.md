@@ -85,28 +85,34 @@ Avant d'entrer dans les détails techniques, je vais vous montrer une illustrati
 ## SLIDE 10 — Bouton Annuler – Premier défi technique
 **⏱ ~2 minutes**
 
-Le premier problème majeur : une fois un calcul lancé, l'utilisateur n'avait aucun moyen de l'arrêter.
+Maintenant passons à la première tache réelle que j'ai accompli, le bouton cancel.
+J'ai fait deux essaies avant d'arriver à une solution optimale.
+Le problème qu'on avait était que, une fois l'utilisateur lance un calcul, il n'a aucun moyen de l'arreter, devait attendre la fin du calcul ou tuer SALOME entièrement.
 
-**Première tentative** : j'ai utilisé le module `multiprocessing` de Python, qui permet de lancer l'algorithme dans un processus séparé et de le tuer sur clic d'annulation. Ça fonctionnait parfaitement sur Linux, mais pas sur Windows — les processus y sont gérés différemment. C'est ma **première leçon de l'année** : SALOME doit être entièrement cross-platform, et cette contrainte ne peut pas être ignorée.
+**Première tentative** : j'ai utilisé le module `multiprocessing` de Python, qui permet de lancer l'algorithme dans un processus séparé et de le tuer sur clic d'annulation. Ça fonctionnait parfaitement sur Linux, mais pas sur Windows — les processus y sont gérés différemment. C'était ma première leçon brut de l'année : SALOME doit être entièrement cross-platform.
 
-**Deuxième tentative** : j'ai cherché une méthode dans la bibliothèque standard Python. La solution : combiner `subprocess`, qui lance l'algorithme comme un processus externe, avec `QThread` de Qt, qui surveille ce processus de manière asynchrone. Quand l'utilisateur clique sur "Annuler", un signal Qt est envoyé au thread de surveillance, qui termine le processus proprement.
+**Deuxième tentative** : j'ai cherché une méthode dans la bibliothèque standard Python. La solution était de combiner `subprocess`, qui lance l'algorithme comme un processus externe, avec `QThread` de Qt, qui surveille ce processus de manière asynchrone sans geler l'interface GUI. Quand l'utilisateur clique sur "Annuler", un signal Qt est envoyé au thread de surveillance, qui termine le processus proprement. Après tests, ça marchait aussi bien sur linux que sur windows.
 
-Résultat : comportement identique sur Linux et Windows. La pull request a été soumise, revue par l'équipe, les tests ont été validés, et elle a été **mergée avec succès** dans la branche principale.
+Je mentionne aussi le git workflow, que j'ai commencé à utiliser depuis le premier jour ici, et que je maitrise maintenant très bien. Au moment de faire ma pull request pour merger ma branche, un remarque un conlfit avec la branche master. Un changement coté EDF sur tout les import qui sont passés à salome.kernel. On a passé quelques heures avec mes tuteurs pour regler ce problème, trouvant la solution avec le rebase interactif de git. Une difficulté qui m'a beacoup appris ce jour là.
+
+Et maintenant, ma pull request a été mergé proprement après etre revue et validée par l'équipe.
 
 ---
 
 ## SLIDE 11 — API Python & Indépendance de la GUI
 **⏱ ~1 min 30**
 
-Deuxième chantier majeur : le couplage entre l'interface graphique et la logique algorithmique.
+Directement après j'ai enchainé dans le meme plugin sur le couplage entre l'interface graphique et la logique algorithmique.
+Il faut savoir que la plateforme SALOME peut etre utilisée dans l'interface graphique, ou via des scripts python. Donc faire une API pour ce plugin permettrai de l'utiliser dans ces scripts là.
 
-J'ai extrait les algorithmes dans une **API Python autonome**. L'interface PyQt devient alors un simple wrapper léger qui appelle cette API, sans contenir de logique métier.
+J'ai extrait les algorithmes d'operations booléennes dans une API python, ce qui a permis à l'interface PyQt devient alors un simple wrapper qui appelle cette API, sans contenir de logique métier.
 
-Ça permet notamment :
-- Une **exécution en ligne de commande** sans lancer SALOME du tout.
-- La **validation des algorithmes** indépendamment de l'interface, avec une précision vérifiée à un seuil de 5×10⁻⁴.
+Une fois l'API faite, on peut maintenant lancer directement une **exécution en ligne de commande** sans ouvrir SALOME.
+J'ai aussi directement implémenté un script de tests de validation des algos indépendamment de l'interface, avec une marge d'erreur de 5.10-4. Les tests on été fait avec le module subtest de python, qui permet donc de lancer un grand test de chaque opération booléenne (Union, intersection, différence) avec les différents algos présents.
 
-J'en ai aussi profité pour faire du nettoyage de code avec Pylint, et pour gérer les fichiers temporaires avec des **context managers** Python — ce qui garantit leur suppression même en cas de crash.
+J'en ai aussi profité pour faire du nettoyage de code avec Pylint, une habitude donnée par mes tuteurs de nettoyé chaque fois le code, bien le commenter et y ajouter des loggers pour des potentiels futurs debug. 
+
+Un manque aussi de ce plugin était la non gestion des fichiers temporaires. Faire une opération booléenne générait plusieurs fichiers intermédiaires .off .obj .stl qui restait stocker dans le dossier /tmp et donc qui créait une surchage de fichiers inutiles dans certains cas. Pour gérer cela j'ai utilisé les **context managers** Python with try qui garantit leur suppression même en cas de crash.
 
 ---
 
