@@ -43,7 +43,7 @@ Pour rendre ces simulations possibles, il faut des outils de **pré-traitement**
 ---
 
 ## SLIDE 6 — SALOME – Vue d'ensemble
-**⏱ ~1 min 30**
+**⏱ ~1 min 15**
 
 La plateforme SALOME c'est quoi? SALOME est une plateforme de simulation numérique développée depuis 2000, par le CEA et EDF et un autre partenaire qui s'appelle opencascade qui se charge plutot de la partie dev, et disponible en open source depuis 2016. Elle se base sur une architecture en module qui permet de faire le pre et post traitement, avec des modules de geometrie CAO, de maillage et de visualisation.
 
@@ -55,12 +55,12 @@ Ma mission dans cette équipe : je suis apprenti ingénieur au LESIM, et mon tra
 
 ## SLIDE 7 — Section 2 : Premier trimestre
 *(slide de transition)*
-Donc on va passer au travaux accompli pendant le premier trimestre en commençant par le meshbooleanplugin
 ---
 
 ## SLIDE 8 — MeshBooleanPlugin – Vue d'ensemble
 **⏱ ~1 min 30**
 
+Donc on va passer au travaux accompli pendant le premier trimestre en commençant par le meshbooleanplugin
 Le MeshBooleanPlugin permet d'effectuer des opérations booléennes entre deux maillages — c'est-à-dire calculer leur union, leur intersection ou leur différence — et d'importer le résultat directement dans SALOME.
 
 Techniquement, il repose sur du Python pour la logique et l'interface graphique en PyQt, et des algorithmes en C++ pour le calcul comme on peut le voir sur le count loc juste ici. Il est hébergé sur GitHub donc déja sorti dans les anciennes version de SALOME et doit fonctionner aussi bien sur Linux que sur Windows.
