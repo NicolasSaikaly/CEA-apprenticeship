@@ -63,7 +63,7 @@ Donc on va passer au travaux accompli pendant le premier trimestre en commençan
 
 Le MeshBooleanPlugin permet d'effectuer des opérations booléennes entre deux maillages — c'est-à-dire calculer leur union, leur intersection ou leur différence — et d'importer le résultat directement dans SALOME.
 
-Techniquement, il repose sur du Python pour la logique et l'interface graphique en PyQt, et des algorithmes en C++ pour le calcul comme on peut le voir sur le count loc juste ici. Il est hébergé sur GitHub et doit fonctionner aussi bien sur Linux que sur Windows.
+Techniquement, il repose sur du Python pour la logique et l'interface graphique en PyQt, et des algorithmes en C++ pour le calcul comme on peut le voir sur le count loc juste ici. Il est hébergé sur GitHub donc déja sorti dans les anciennes version de SALOME et doit fonctionner aussi bien sur Linux que sur Windows.
 
 Quand j'ai pris le plugin en charge :
 - Il était caché dans le menu du module SMESH en haut, sans icône visible.
