@@ -83,7 +83,7 @@ Avant d'entrer dans les détails techniques, je vais vous montrer une illustrati
 ---
 
 ## SLIDE 10 — Bouton Annuler – Premier défi technique
-**⏱ ~2 minutes**
+**⏱ ~2 min 30**
 
 Maintenant passons à la première tache réelle que j'ai accompli, le bouton cancel.
 J'ai fait deux essaies avant d'arriver à une solution optimale.
@@ -100,7 +100,7 @@ Et maintenant, ma pull request a été mergé proprement après etre revue et va
 ---
 
 ## SLIDE 11 — API Python & Indépendance de la GUI
-**⏱ ~1 min 30**
+**⏱ ~2 minutes**
 
 Directement après j'ai enchainé dans le meme plugin sur le couplage entre l'interface graphique et la logique algorithmique.
 Il faut savoir que la plateforme SALOME peut etre utilisée dans l'interface graphique, ou via des scripts python. Donc faire une API pour ce plugin permettrai de l'utiliser dans ces scripts là.
