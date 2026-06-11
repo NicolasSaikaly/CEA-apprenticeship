@@ -1,19 +1,19 @@
 # Discours de soutenance – Bilan d'apprentissage année 1
-# Visite en entreprise du 13 avril
+# Soutenance du 17 juin
 **Nicolas SAIKALY – CEA SGLS/LESIM – SALOME platforme**
 **Durée cible : 20 minutes**
 
 ## SLIDE 1 — Page de titre
 **⏱ ~30 secondes**
 
-Bonjour à tous. Je suis Nicolas SAIKALY, on se réunit aujourd'hui pour faire le bilan de ma première année d'apprentissage qui a débuté en Septembre dans le service de génie logiciel au CEA. Je vais vous présenter le travail accompli pendant ce temps, plus exactement pendant 14 semaines de travail. Mon sujet porte sur le développement de la plateforme SALOME et je suis encadré par Christophe et Afeef.
+Bonjour à tous. Je suis Nicolas SAIKALY,apprenti en première année du cycle ingénieur à Polytech Paris Saclay, en spécialité informatique et ingénierie mathématique. On se réunit aujourd'hui pour faire le bilan de ma première année d'apprentissage qui a débuté en Septembre dernier dans le service de génie logiciel au CEA Saclay. Je vais vous présenter les travaux accomplis pendant cette période là, qui représente exactement 16 semaines de travail effectif. Mon sujet porte sur le développement et la modernisation de la plateforme SALOME et je suis encadré par Christophe Bourcier et Mohd Afeef Badri présent ici avec nous.
 
 ---
 
 ## SLIDE 2 — Agenda
 **⏱ ~30 secondes**
 
-Pour structurer cette présentation, je vais commencer par vous donner le contexte de mon apprentissage en présentant le CEA par ce que c'est demandé dans la soutenance de fin d'année et la plateforme SALOME. Puis je vais parler des travaux accomplis pendant le premier trimestre notamment sur le meshbooleanplugin, puis pendant le deuxième avec le polymeshplugin, et je terminerai par une conclusion et des potentiels futurs travaux.
+Pour structurer cette présentation, je vais commencer par vous donner le contexte de mon apprentissage en présentant le CEA et la plateforme SALOME. Puis je vais parler en détail des travaux accomplis pendant le premier trimestre notamment sur le meshbooleanplugin, puis je présenterai plus brièvement ceux du second trimestre avec le polymeshplugin pour respecter le temps, et je terminerai par une bilan et les perspectives pour la suite.
 
 ---
 
@@ -25,29 +25,27 @@ Pour structurer cette présentation, je vais commencer par vous donner le contex
 ## SLIDE 4 — Le CEA
 **⏱ ~1 minute**
 
-Donc petite présentation du CEA, le Commissariat à l'Énergie Atomique et aux Énergies Alternatives. C'est un organisme de recherche public fondé en 1945, qui compte environ 20 000 employés répartis sur plusieurs sites en France. Il intervient dans des domaines comme l'énergie nucléaire, la défense et les technologies numériques.
+Donc petite présentation du CEA qui est mon entreprise d'accueil. C'est un organisme de recherche public majeur fondé en 1945 par le général de Gaulle pour développer les applications civiles et militaires de l'énergie nucléaire. Il intervient dans différents domaines comme l'énergie bas carbone, l'énergie nucléaire, la défense et les technologies numériques. Le CEA compte aujourd'hui plus de 21 000 salariés répartis sur différents sites en France, moi je suis sur le site de Saclay. Il fait partie également du top 5 national des organismes déposant des brevets, et est membre fondateur et partenaire de l'Université Paris-Saclay.
 
-Mon laboratoire d'accueil s'inscrit dans une chaîne hiérarchique assez longue : je fais partie du laboratoire environnement de simulation le LESIM dans le service de génie logiciel pour la simulation.
-
-C'est un laboratoire orienté développement logiciel scientifique, qui développe et maintient des projets open source majeurs dont fait partie SALOME, mais aussi des projets européens et confidentiels.
+Mon laboratoire d'accueil est le LESIM, le Laboratoire Environnement de Simulation, dans le service de génie logiciel. C'est un laboratoire orienté développement logiciel scientifique, on fait principalement de l'ingénierie logicielle avec plusieurs projets européens, et notre principal projet open source est la plateforme SALOME. Notre but est donc de fournir à nos ingénieurs chercheurs et physiciens un environnement de travail complet.
 
 ---
 
 ## SLIDE 5 — Simulations numériques au CEA
-**⏱ ~1 minute**
+**⏱ ~50 secondes**
 
-Donc, comme je viens de le dire, un grand travail d'ingénierie logiciel se fait au CEA, la simulation numérique est centrale. Elle permet de remplacer des expériences physiques coûteuses ou dangereuses — en nucléaire, en mécanique des fluides, en thermique... Pour illustrer un peu ces simulations,j'ai mis ces images ou on peut voir, la visualisation de ligne de courant, champ de pression, simulation d'ecoulement de goutte d'eau, une simulation HPC sur un réacteur nucléaire et plein d'autres.
+Donc, comme je viens de le dire, un grand travail d'ingénierie logiciel se fait au CEA, la simulation numérique est centrale. Elle permet de remplacer des expériences physiques coûteuses ou dangereuses ou meme parfois impossible à réaliser — en nucléaire, en mécanique des fluides, en thermique... Pour illustrer un peu ces simulations,j'ai mis des exemples de simulations numérique qui se font au CEA, la visualisation de ligne de courant, champ de pression, simulation d'ecoulement de goutte d'eau,ou meme une simulation HPC sur un réacteur nucléaire et plein d'autres.
 
-Pour rendre ces simulations possibles, il faut des outils de **pré-traitement** — pour préparer la géométrie et le maillage — et de **post-traitement** — pour analyser les résultats. Donc ici au CEA on utilise un outil qui s'appelle SALOME et ça en vient au coeur de mon sujet.
+Pour rendre ces simulations possibles, on a besoin d'outil pour faire le **pré-traitement** — pour préparer la géométrie et le maillage — et de **post-traitement** — pour analyser les résultats. Donc ici au CEA on utilise un outil qui s'appelle SALOME et ça en vient au coeur de mon sujet.
 
 ---
 
 ## SLIDE 6 — SALOME – Vue d'ensemble
-**⏱ ~1 min 15**
+**⏱ ~1 min 20**
 
-La plateforme SALOME c'est quoi? SALOME est une plateforme de simulation numérique développée depuis 2000, par le CEA et EDF et un autre partenaire qui s'appelle opencascade qui se charge plutot de la partie dev, et disponible en open source depuis 2016. Elle se base sur une architecture en module qui permet de faire le pre et post traitement, avec des modules de geometrie CAO, de maillage et de visualisation.
+La plateforme SALOME c'est quoi? SALOME est une plateforme de simulation numérique co-développée depuis l'année 2000, par le CEA et EDF et rendu open source depuis 2016. Elle se base sur une architecture en module qui permet de faire le pre et post traitement, avec des modules pour faire la geometrie CAO, le maillage et la visualisation des résultats. En terme de chiffre, elle dépasse les 5000 téléchargements mensuels et compte deux sorties de versions majeures par an. On estime environ 1000 utilisateurs en interne au CEA et EDF. Une étape à ne pas sous estimer ici est l'étape du maillage qui consiste à discrétiser une géométrie en un ensemble fini d'éléments sur lesquels les solveurs vont calculer. C'est une étape fondamentale dans ce workflow, une erreur ici compromet l'intégralité de la simulation en aval. 
 
-Elle est utilisée dans de nombreux contextes académiques et industriels : formation en ingénierie numérique, recherche fondamentale en mécanique des fluides et des solides, et dans des secteurs industriels comme l'énergie, la marine, l'aéronautique ou l'automobile.
+Elle est utilisée dans de nombreux contextes comme la formation en ingénierie numérique,la recherche fondamentale en mécanique des fluides et des solides, et dans des secteurs industriels comme l'énergie, la marine, l'aéronautique ou l'automobile.
 
 Ma mission dans cette équipe : je suis apprenti ingénieur au LESIM, et mon travail jusqu'à présent c'est principalement basé dans le module **SMESH** — le module de maillage de SALOME ou j'ai développé et modernisé deux plugin, le meshbooleanplugin et le polymeshplugin.
 
