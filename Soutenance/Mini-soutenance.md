@@ -137,24 +137,24 @@ Comme on peut le voir ici un extrait d'un dump study que j'ai fait ou on remarqu
 ## SLIDE 14 — Cas d'usage scientifiques
 **⏱ ~1 minute**
 
-Passons aux cas d'usage scientifiques, pourquoi fait on des opérations booléennes sur maillage? C'est quoi l'interet? Les opérations booléennes sur les maillages répondent à un besoin réel en simulation numérique. Elles sont particulièrement utiles quand il n'existe pas de modèle CAO disponible — par exemple avec des données tomographiques. Jusqu'à présent on faisait ce type d'opération avec l'outil commercial MG-Cleaner, donc on essaye de voir comment on peut passer à l'utilisation de ce plugin.
+Passons aux cas d'usage scientifiques, pourquoi fait on des opérations booléennes sur maillage? C'est quoi l'interet? C'est très important de toujours comprendre l'interet du travail qu'on fait.
 
-Deux exemples concrets ou ça pourrait etre utiles :
-- **Batteries lithium-ion** : On peut faire ici des opérations booléennes entre les composants d'une cellule, qui sont chacun coloré pour des simulations de stockage d'énergie.
-- **Béton et agrégats** : Ou encore dans l'intersection d'un maillage surfacique cylindrique avec des agrégats de béton, pour modéliser le comportement mécanique de matériaux composites. Ici on fait le clipping pour visualiser le volume intérieur.
+Les opérations booléennes sur les maillages répondent à un besoin réel en simulation numérique. Elles sont particulièrement utiles quand il n'existe pas de modèle CAO disponible, par ce que en temps normal pour faire une simulation on part d'un modèle CAO - une représentation géométrique précise de l'objet - et on génère le maillage à partir de là. Mais dans certain cas ce modèle n'existe pas, avec des données tomographiques par exemple. Dans ce cas le maillage est la seule représentation disponible, et les opérations booléennes deviennent le seul moyen d'assembler ou de combiner ces géométries.
+
+Deux exemples concrets de ce genre d'opération:
+L'intersection entre un maillage surcafique cylindrique et des agrégats de bétons de formes irrégulières. En haut on remarque les deux maillages d'entrée séparés, et puis une vue en coupe du maillage obtenu après intersection. C'est utilisé pour simuler le comportement mécanique des matériaux composites. Un autre exemple serait la modélisation de cellules de batteries lithium-ion. Ici on voit une miscrostructure poreuse d'electrode, on pourrait assembler les composants des cellules pour des simulations de stockage d'energie.
 
 ---
 
 ## SLIDE 15 — Section 3 : Deuxième trimestre
 *(slide de transition)*
-Passons maintenant au travaux accomplis pendant le deuxième trimestre avec le polymeshplugin.
+Passons maintenant au travaux accomplis pendant le deuxième trimestre avec le polymeshplugin, ici je vais parler plus brièvement pour respecter le temps.
 
 ---
 
 ## SLIDE 16 — PolyMeshPlugin – Vue d'ensemble
 **⏱ ~1 minute**
-
-Le PolyMeshPlugin est le second plugin sur lequel j'ai travaillé. Son rôle est de transformer n'importe quel maillage en **maillage polyédrique**. Il intègre trois algorithmes C++ : Polydual, Geogram et cfMesh, chacun produisant un type différent de maillage polyédrique. Les deux algos polydual et Cfmesh se basent sur la librairie OpenFoam, geogram sur la librairie geogram avec l'api vorpalite.
+Le polymeshplugin permet de transformer n'importe quel maillage en **maillage polyédrique**, donc un maillage avec des cellules en forme de polygones. Il intègre trois algorithmes C++ : Polydual, Geogram et cfMesh, chacun produisant un type différent de maillage polyédrique. Les deux algos polydual et Cfmesh se basent sur la librairie OpenFoam, geogram sur la librairie geogram avec l'api vorpalite.
 
 Techniquement, l'architecture est similaire : Python, PyQt, C++, GitHub en interne pour le moment, les changements seront inclus avec la prochaine sortie de SALOME master, et bien evidemment compatible Linux et Windows.
 
