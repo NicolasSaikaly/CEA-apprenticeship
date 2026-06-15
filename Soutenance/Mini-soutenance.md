@@ -193,12 +193,11 @@ J'ai également ajouté : une boîte de chargement après le calcul pour que l'u
 ## SLIDE 19 — Geogram – Refonte architecturale
 **⏱ ~2 minutes**
 
-Maintenant la tache dont je suis le plus fièr dans ce second trimestre. L'algorithme geogram du polymeshplugin passait deux étapes. Le fichier produit par l'algorithme était d'abord converti en `.ovm`, puis parsé par des centaines de lignes de Python fragile, avant d'être importé dans SALOME. C'était lent, instable et difficile à maintenir. Donc on m'a demandé d'améliorer cela en abandonnant le format .ovm pour le format .geogram binaire natif.
+Maintenant la tache la plus compliqué de ce second trimestre. L'algorithme geogram du polymeshplugin passait deux étapes. Le fichier produit par l'algorithme était d'abord converti en `.ovm`, qui était parsé ou lu par une fonctions pythons avant d'être importé dans SALOME. C'était lent, instable et difficile à maintenir. Donc on m'a proposé d'améliorer cela en abandonnant le format .ovm pour le format .geogram binaire natif.
+La raison pour le changement, remplacé le python par du c++ plus adapté dans ce genre de situation, ça sera plus rapide et le python n'aura qu'à importer le fichier .med directement dans SALOME.
 
-Donc j'ai développé un **exécutable C++ dédié** appelé `geogram2med`, compilé avec CMake. Il repose sur deux bibliothèques principales : Geogram pour lire le fichier de maillage, et MEDCoupling — une bibliothèque C++ du CEA — pour construire et exporter le maillage au format .med que SALOME comprend nativement. Alors comment ça fonctionne concrètement : premierement on charge le fichier .geogram produit par vorpalite, l'algo de Voronoi avec l'option generate_ids = true. Ensuite il extrait les coordonnées de tous les noeuds dans un tableau de MEDCoupling. Une partie clé est que Geogram stock les facettes 2D avec un attribut cell_id qui indique à quelle cellule polyédrique appartient chaque facette. Puis on reconstruit les polyèdre séparé par des -1 qui est la convention MEDCoupling pour la norme NORM_POLYHED qui représente un polyhèdre quelconque.
-Après le programme calcule automatiquement la surface 2D du volume et export le tout dans un fichier .med avec les groupes associés.
+Donc j'ai développé un **exécutable C++ dédié** appelé `geogram2med`, compilé avec CMake. Il lit directement le fichier .geogram qui est binaire, donc on plus léger, extrait les nœuds et les groupes, puis reconstruit les polyèdres via la bibliothèque MEDCoupling du CEA, et exporte directement au format .med que SALOME comprend nativement.
 
-Le layer Python n'a plus qu'à importer ce fichier `.med` nativement. Résultat : des centaines de lignes de Python fragile supprimées, un pipeline plus rapide, stable et maintenable.
 
 ---
 
