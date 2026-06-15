@@ -201,39 +201,21 @@ Donc j'ai développé un **exécutable C++ dédié** appelé `geogram2med`, comp
 
 ---
 
-## SLIDE 20 — Cas test avec Geogram
-**⏱ ~30 secondes**
-
-Voici un exemple concret sur une géométrie type pipe. Geogram contient une option export seeds qui permet de garder le meme rafinement dans le maillage poly que dans le maillage tetra en faisant de chaque point seed le centre d'une nouvelle cellule générée. À gauche, le maillage tétraédrique de départ. À droite,le maillage obtenu après application de Geogram avec export des seeds, moi j'ai affiché les deux maillage de manière superposée pour voir comment chaque point seed est le centre des nouvelles cellules.
 
 ---
 
-## SLIDE 21 — Section 4 : Conclusion & Perspectives
+## SLIDE 20 — Section 4 : Conclusion & Perspectives
 *(slide de transition)*
 
 ---
 
+## SLIDE 21 - Takeaways
+Pour conclure, je suis très satisfait de la progression faite cette année. Sur le plan personnel je suis arrivé au CEA avec aucune expérience en linux, aujourd'hui je me considère complètement autonome. J'ai profité d'une formation C++ moderne scientifique dispensée par le CNRS, et d'une intégration dans un environnement scientifique de haut niveau, qui donne encore plus de sens à ma formation en informatique. Pour les compétences techniques acquises : développement d'interfaces graphiques avec PyQt, architecture logicielle et conception d'API, intégration Python/C++, qualité de code avec tests unitaires, Pylint et Git. Mes changements sur ces deux plugins ont été intégré avec succès et seront disponibles dès la prochaine version de SALOME.
+
 ## SLIDE 22 — Bilan & Perspectives
 **⏱ ~2 minutes**
-
-Pour conclure, ce que je retiens de cette année, qui n'est pas encore fini et pour moi le plus grand travail reste à venir, mais je suis très satisfait de la progression qui a été faite.
-
-**Sur le plan personnel** : j'ai gagné en autonomie sur Linux, arrivant ici ne sachant rien faire, j'ai également profité d'une formation C++ scientifique moderne de 21 heures dispensée par le CNRS, et j'ai appris en continu tout au long de l'année.
-
-**Compétences techniques acquises** : développement d'interfaces graphiques avec PyQt, architecture logicielle et conception d'API, intégration Python/C++, qualité de code avec les tests unitaires, Pylint et le rebase Git.
-
-
-**Statut des pull requests** :
-- MeshBooleanPlugin : **mergé dans master** mes changement seront intégré dans la prochaine version de SALOME.
-- PolyMeshPlugin : **en attente de merge**, sans conflits.
-
-**Perspectives pour l'année 2** :
-- Intégration d'algorithmes de maillage hexaédrique dans un workflow multi-outils.
-- Algorithme de couche prismatique issu de code_saturne, le solveur CFD open source.
-
-**Objectif global sur 3 ans** : monter progressivement en compétence, prendre en charge des problèmes d'ingénierie de plus en plus complexes, et contribuer à faire de SALOME une plateforme de simulation prête pour la production.
-
----
+L'objectif est de monter en connaissance et prendre de l'expérience au cours de mes 3 ans pour arriver à prendre des taches d'ingénieur logiciel en 5 eme année.
+Pour la suite, j'ai déjà commencé à explorer l'algorithme de couche prismatique issu de code_saturne, le solveur CFD open source d'EDF. L'objectif est de l'intégrer comme nouveau plugin SALOME aux côtés du PolyMeshPlugin, pour que les utilisateurs puissent générer des couches prismatiques directement depuis l'interface graphique. Une autre tache possible serait de faire un plugin pour les maillages hexa en se basant sur des travaux de thèse faite en collaboration entre le LESIM et le LIHPC.
 
 ## SLIDE 23 — Merci / Questions
 
