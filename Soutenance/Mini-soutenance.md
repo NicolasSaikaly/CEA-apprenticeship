@@ -125,9 +125,9 @@ Et c'est aussi le cas pour l'API ou on peut faire une opération booléenne dire
 **⏱ ~1 min 30**
 
 J'ai parlé tout à l'heure du fait que SALOME peut etre utilisé avec des scripts python. L'integration de ce plugin dans le dump study renforce encore plus cette capacité
-Le **dump study** est une fonctionnalité de SALOME qui enregistre automatiquement toutes les actions de l'utilisateur dans l'interface graphique sous forme de script Python — ce qui permet de rejouer des opérations sans interaction manuelle.
+Le **dump study** est une fonctionnalité de SALOME qui enregistre automatiquement toutes les actions de l'utilisateur dans l'interface graphique sous forme de script Python — ce qui permet de rejouer des opérations sans interaction manuelle, gagnant ainsi beaucoup de temps.
 
-On avait un petit problème dans le dump, il enregistrait les importations des fichiers temporaires. Mais vu que à présent ces fichiers était nettoyé après l'opération, le script produit était inutilisable.
+Les importations des fichiers intermédiaires générés par les opérations booléennes polluaient ce script et le rendait inutilisable, parce que ces fichiers sont supprimés maintenant après la fin de l'opération.
 
 Donc j'ai mis en pause l'enregistrement pendant ces étapes intermédiaires et j'injecte directement des appels API propres dans le dump pour chaque opération booléenne réalisée. Résultat : les actions de l'interface sont maintenant enregistrées comme des commandes API lisibles et rejouables. Cela **augmente l'independance entre le GUI et python API** et permet donc à l'utilisateur de jouer avec le script et le relancer comme il le souhaite.
 Comme on peut le voir ici un extrait d'un dump study que j'ai fait ou on remarque 3 opérations booléennes que j'ai fait dans l'interface bien enregistrés comme commandes python, et on remarque le .GetMesh fait automatiquement sur des objets SALOME, et sur le intersection_1 on le voit pas car c'est déja un objet python.
