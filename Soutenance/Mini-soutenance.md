@@ -170,13 +170,12 @@ Il n'y avait pas de gestion d'erreur propre.
 
 
 Avant d'entrer des le travail technique, j'aimerai rapidement aborder l'interet des maillages polyhédriques.
-Pourquoi s'intéresser aux maillages polyédriques ?Car ils permettent un calcul plus rapide avec un nombre de cellule plus bas. Je vais vous montrer ici des statistiques que j'ai tiré d'une étude qui compare différents types de maillage.
-Le maillage polyhédrique est dérivé du maillage tetra directement en formant des polygones autour de chaque noeuds du maillage tetra.
-Donc pour ces deux maillages, on remarque le nombre d'éléments volumiques à peu près 5 fois plus petit dans un maillage poly que dans un maillage tetra. Ce qui revient à ce que je viens de dire, un calcul plus rapide.
+Pourquoi s'intéresser aux maillages polyédriques ? Avoir un nombre de cellule plus bas permet d'avoir un calcul plus rapide. Je vais vous montrer ici des statistiques que j'ai tiré d'une étude sur symscape qui compare différents types de maillage.
+Donc ici on a deux maillages, un tetra et un poly, l'étude montre que pour la meme geometrie, le maillage poly contient 5 fois moins de cellules que le maillage tetra, ce qui ammène donc à un calcul plus rapide.
 
 Autre point, on a une meilleur orthogonalité, donc une marge d'erreur plus petite. Ils prouvent aussi etre meilleurs sur des geométrie complexes.
 
-Donc on peut dire qu'ils représentent **un bon compromis** entre les maillages tétraédriques — faciles à générer mais moins précis en CFD — et les maillages hexaédriques — plus précis mais très difficiles à générer sur des géométries complexes.
+Donc on peut dire qu'ils représentent **un bon compromis** entre les maillages tétraédriques — faciles à générer mais moins précis en CFD — et les maillages hexaédriques — plus difficile à générer.
 
 Concrètement : pour un même niveau de convergence en simulation CFD, le maillage polyédrique nécessite environ **deux fois moins d'itérations** que le tétraédrique, tout en ayant un nombre de cellules bien inférieur. 
 
@@ -185,11 +184,9 @@ Concrètement : pour un même niveau de convergence en simulation CFD, le mailla
 ## SLIDE 18 — Refactoring cross-platform
 **⏱ ~1 min 30**
 
-Maintenant, ce que j'ai fait techniquement dans ce plugin c'est premièrement rendre l'utilisation sur windows encore plus simples. En remplaçant la méthode wexpect/pexpect qui nécessitait un script post install sur windows pour marcher par la méthode que subprocess que j'avais utilisé pour le meshbooleanplugin. Une méthode déja testé et que je connais. Donc résultat meme comportement sur linux et windows sans script d'installation supplémentaire.
+Maintenant ce que j'ai fais techniquement dans ce plugin c'est que j'ai réglé le problème de complications sur windows en remplaçant la méthode wexpect/pexpect qui nécéssitait un script d'installation par la méthode subprocess que je connaissais déja et que je savais que ça marchait bien sur linux et sur windows. J'ai aussi implémenté une barre de progression en temps réel avec un lecture caractère par caractère de la sortie du processus en terminal.
 
-Deuxième amélioration : avec l'ancienne méthode on avait une **barre de progression en temps réel**. En passant à subprocess, reproduire cela n'était pas aussi simple. J'ai mis en place une lecture caractère par caractère de la sortie du processus que je stock dans un buffer, le buffer est vidé à chaque espace ou retour à la ligne, analysé pour extraire le pourcentage d'avancement, et chaque étape de l'algorithme déclenche une mise à jour visuelle.
-
-J'ai également ajouté : une boîte de chargement après le calcul pour que l'utilisateur sache que l'opération est finie et le fichier .med est en train de se charger dans l'object browser de SALOME. j'ai aussi implémenté une gestion explicite des erreurs de cfMesh avec un message clair si le maillage est vide. En lisant le fichier point généré par l'opération, et des avertissements en cas de transfert partiel de groupes — au lieu d'un échec silencieux.
+J'ai également ajouté : une boîte de chargement après le calcul pour que l'utilisateur sache que l'opération est finie et le fichier .med est en train de se charger dans l'object browser de SALOME. j'ai aussi implémenté une gestion explicite des erreurs de cfMesh avec un message clair si le maillage est vide., et des avertissements en cas de transfert partiel de groupes — au lieu d'un échec silencieux.
 
 ---
 
