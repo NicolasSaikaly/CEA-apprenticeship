@@ -6,7 +6,8 @@
 ## SLIDE 1 — Page de titre
 **⏱ ~30 secondes**
 
-Bonjour à tous. Je suis Nicolas SAIKALY,apprenti en première année du cycle ingénieur à Polytech Paris Saclay, en spécialité informatique et ingénierie mathématique. On se réunit aujourd'hui pour faire le bilan de ma première année d'apprentissage qui a débuté en Septembre dernier dans le service de génie logiciel au CEA Saclay. Je vais vous présenter les travaux accomplis pendant cette période là, qui représente exactement 16 semaines de travail effectif. Mon sujet porte sur le développement et la modernisation de la plateforme SALOME et je suis encadré par Christophe Bourcier et Mohd Afeef Badri présent ici avec nous.
+Bonjour à tous. Je suis Nicolas SAIKALY,apprenti en première année du cycle ingénieur à Polytech Paris Saclay, en spécialité informatique et ingénierie mathématique. On se réunit aujourd'hui pour faire le bilan de ma première année d'apprentissage qui a débuté en Septembre dernier dans le service de génie logiciel au CEA Saclay. Je vais vous présenter les travaux accomplis pendant cette période là, qui représente exactement 16 semaines de travail effectif. Mon sujet porte sur le développement et la modernisation de la plate
+forme SALOME et je suis encadré par Christophe Bourcier et Mohd Afeef Badri présent ici avec nous.
 
 ---
 
@@ -43,7 +44,7 @@ Pour rendre ces simulations possibles, on a besoin d'outil pour faire le **pré-
 ## SLIDE 6 — SALOME – Vue d'ensemble
 **⏱ ~1 min 20**
 
-La plateforme SALOME c'est quoi? SALOME est une plateforme de simulation numérique co-développée depuis l'année 2000, par le CEA et EDF et rendu open source depuis 2016. Elle se base sur une architecture en module qui permet de faire le pre et post traitement, avec des modules pour faire la geometrie CAO, le maillage et la visualisation des résultats. En terme de chiffre, elle dépasse les 5000 téléchargements mensuels et compte deux sorties de versions majeures par an. On estime environ 1000 utilisateurs en interne au CEA et EDF. Une étape à ne pas sous estimer ici est l'étape du maillage qui consiste à discrétiser une géométrie en un ensemble fini d'éléments sur lesquels les solveurs vont calculer. C'est une étape fondamentale dans ce workflow, une erreur ici compromet l'intégralité de la simulation en aval. 
+La plateforme SALOME c'est quoi? SALOME est une plateforme de simulation numérique co-développée depuis l'année 2000, par le CEA et EDF et rendu open source depuis 2004. Elle se base sur une architecture en module qui permet de faire le pre et post traitement, avec des modules pour faire la geometrie CAO, le maillage et la visualisation des résultats. En terme de chiffre, elle dépasse les 5000 téléchargements mensuels et compte deux sorties de versions majeures par an. On estime environ 1000 utilisateurs en interne au CEA et EDF. Une étape à ne pas sous estimer ici est l'étape du maillage qui consiste à discrétiser une géométrie en un ensemble fini d'éléments sur lesquels les solveurs vont calculer. C'est une étape fondamentale dans ce workflow, une erreur ici compromet l'intégralité de la simulation en aval. 
 
 Elle est utilisée dans de nombreux contextes comme la formation en ingénierie numérique,la recherche fondamentale en mécanique des fluides et des solides, et dans des secteurs industriels comme l'énergie, la marine, l'aéronautique ou l'automobile.
 
@@ -58,16 +59,15 @@ Ma mission dans cette équipe : je suis apprenti ingénieur au LESIM, et mon tra
 ## SLIDE 8 — MeshBooleanPlugin – Vue d'ensemble
 **⏱ ~1 min 30**
 
-Donc on va passer au travaux accompli pendant le premier trimestre en commençant par le meshbooleanplugin
-Le MeshBooleanPlugin permet d'effectuer des opérations booléennes entre deux maillages — c'est-à-dire calculer leur union, leur intersection ou leur différence — et d'importer le résultat directement dans SALOME.
+Donc on va passer au travaux accompli pendant le premier trimestre en commençant par une présentation du meshbooleanplugin
+Le MeshBooleanPlugin permet d'effectuer des opérations booléennes entre deux maillages — c'est-à-dire calculer leur union, leur intersection ou leur différence — et d'importer le résultat directement au format natif de maillage .med dans SALOME. Il intègre 6 algorithmes de calcul offrant ainsi une multiplicité de choix à l'utilisateur.
 
-Techniquement, il repose sur du Python pour la logique et l'interface graphique en PyQt, et des algorithmes en C++ pour le calcul comme on peut le voir sur le count loc juste ici. Il est hébergé sur GitHub donc déja sorti dans les anciennes version de SALOME et doit fonctionner aussi bien sur Linux que sur Windows.
+Techniquement, il repose sur du Python pour la logique et l'interface graphique en PyQt, et des algorithmes de calcul en C++ . Il est hébergé sur GitHub donc déja sorti dans les anciennes version de SALOME et doit fonctionner aussi bien sur Linux que sur Windows.
 
 Quand j'ai pris le plugin en charge :
-- Il était caché dans le menu du module SMESH en haut, sans icône visible.
-- Si l'utilisateur lançait un calcul, il était impossible de l'arrêter — il fallait tuer SALOME entièrement ou attendre la fin.
+- On avait aucun moyen d'arreter un calcul déja lancé.
 - La logique algorithmique et l'interface graphique étaient mélangées dans le même code.
-- Il n'y avait ni d'API Python, ni intégration avec le "dump study" de SALOME.
+- Il n'y avait ni d'API Python, ni de script de test, ni d'intégration avec le "dump study" de SALOME.
 
 Mon travail a consisté à corriger tout ça.
 
@@ -85,39 +85,38 @@ Avant d'entrer dans les détails techniques, je vais vous montrer une illustrati
 
 Maintenant passons à la première tache réelle que j'ai accompli, le bouton cancel.
 J'ai fait deux essaies avant d'arriver à une solution optimale.
-Le problème qu'on avait était que, une fois l'utilisateur lance un calcul, il n'a aucun moyen de l'arreter, devait attendre la fin du calcul ou tuer SALOME entièrement.
+Le problème qu'on avait était que, une fois l'utilisateur lance un calcul, il n'a aucun moyen de l'arreter, devait attendre la fin du calcul ou tuer SALOME entièrement. Ce qui n'était pas pratique sur les longs calculs.
 
-**Première tentative** : j'ai utilisé le module `multiprocessing` de Python, qui permet de lancer l'algorithme dans un processus séparé et de le tuer sur clic d'annulation. Ça fonctionnait parfaitement sur Linux, mais pas sur Windows — les processus y sont gérés différemment. C'était ma première leçon brut de l'année : SALOME doit être entièrement cross-platform.
+**Première tentative** : j'ai utilisé le module `multiprocessing` de Python. Alors que ça marchait bien sur mon poste en linux, les tests ont montré différemment sur Windows. SALOME devant etre entierement cross platform, j'ai du trouver une méthode plus standard.
 
-**Deuxième tentative** : j'ai cherché une méthode dans la bibliothèque standard Python. La solution était de combiner `subprocess`, qui lance l'algorithme comme un processus externe, avec `QThread` de Qt, qui surveille ce processus de manière asynchrone sans geler l'interface GUI. Quand l'utilisateur clique sur "Annuler", un signal Qt est envoyé au thread de surveillance, qui termine le processus proprement. Après tests, ça marchait aussi bien sur linux que sur windows.
+**Deuxième tentative** : j'ai cherché une méthode dans la bibliothèque standard Python, trouvant une méthode qui marche bien  et qui est de combiner `subprocess`, qui lance l'algorithme comme un processus externe, avec `QThread` de Qt, qui surveille ce processus de manière asynchrone sans geler l'interface GUI. Quand l'utilisateur clique sur "Annuler", un signal Qt est envoyé au thread de surveillance, qui termine le processus proprement. Après tests, ça marchait aussi bien sur linux que sur windows.
 
-Je mentionne aussi le git workflow, que j'ai commencé à utiliser depuis le premier jour ici, et que je maitrise maintenant très bien. Au moment de faire ma pull request pour merger ma branche, un remarque un conlfit avec la branche master. Un changement coté EDF sur tout les import qui sont passés à salome.kernel. On a passé quelques heures avec mes tuteurs pour regler ce problème, trouvant la solution avec le rebase interactif de git. Une difficulté qui m'a beacoup appris ce jour là.
-
-Et maintenant, ma pull request a été mergé proprement après etre revue et validée par l'équipe.
+Et par la suite mes changements ont pu etre intégré dans la branche master de SALOME, comme on le voit sur cette pull request, une expérience qui m'a aussi permis de maitriser le rebase interactif de git.
 
 ---
 
 ## SLIDE 11 — API Python & Indépendance de la GUI
 **⏱ ~2 minutes**
 
-Directement après j'ai enchainé dans le meme plugin sur le couplage entre l'interface graphique et la logique algorithmique.
+Directement après j'ai enchainé dans le meme plugin sur la création d'une API et le couplage entre l'interface graphique et la logique algorithmique.
 Il faut savoir que la plateforme SALOME peut etre utilisée dans l'interface graphique, ou via des scripts python. Donc faire une API pour ce plugin permettrai de l'utiliser dans ces scripts là.
 
-J'ai extrait les algorithmes d'operations booléennes dans une API python, ce qui a permis à l'interface PyQt devient alors un simple wrapper qui appelle cette API, sans contenir de logique métier.
+J'ai extrait les algorithmes d'operations booléennes dans une API python, ce qui a permis à l'interface PyQt devient alors un simple wrapper qui appelle cette API qui gère déja tout de a à z.
 
 Une fois l'API faite, on peut maintenant lancer directement une **exécution en ligne de commande** sans ouvrir SALOME.
 J'ai aussi directement implémenté un script de tests de validation des algos indépendamment de l'interface, avec une marge d'erreur de 5.10-4. Les tests on été fait avec le module subtest de python, qui permet donc de lancer un grand test de chaque opération booléenne (Union, intersection, différence) avec les différents algos présents.
 
 J'en ai aussi profité pour faire du nettoyage de code avec Pylint, une habitude donnée par mes tuteurs de nettoyé chaque fois le code, bien le commenter et y ajouter des loggers pour des potentiels futurs debug. 
 
-Un manque aussi de ce plugin était la non gestion des fichiers temporaires. Faire une opération booléenne générait plusieurs fichiers intermédiaires .off .obj .stl qui restait stocker dans le dossier /tmp et donc qui créait une surchage de fichiers inutiles dans certains cas. Pour gérer cela j'ai utilisé les **context managers** Python with try qui garantit leur suppression même en cas de crash.
+Un manque aussi de ce plugin était la non gestion des fichiers temporaires. Faire une opération booléenne générait plusieurs fichiers intermédiaires .off .obj .stl qui restait stocker dans le dossier /tmp de l'environnement sans jamais y etre nettoyé. Pour gérer cela j'ai utilisé les **context managers** Python with try qui créé un répertoire temporaire au début de chaque opération, garantissant la suppression de ces fichiers même en cas de crash.
 
 ---
 
 ## SLIDE 12 — Exemples
 **⏱ ~30 secondes**
 
-Donc pour illuster ça on peut voir que le script de test peut etre lancé en terminal en faisant SALOME context, dans mon cas j'ai un algo qui n'est présent, donc j'ai 5 algos avec 3 opérations booléennes ce qui fait 15 sub test.
+Donc on peut voir que le script de test peut etre lancé en terminal en initialisant le SALOME context, dans mon cas j'ai un algo qui n'est présent, donc j'avais 5 algos présent dans mon environnement, mais on remarque que le script ne renvoie pas un échec, parce que les tests sont exécuté uniquement pour les algos disponibles. Donc 5 algo et 3 opérations booléennes, 15 sub test exécuté.
+
 Et c'est aussi le cas pour l'API ou on peut faire une opération booléenne directement en terminal et on remarque à la fin que l'Union a bien réussi avec le fichier .med en sortie et le dossier temporaire effacé.
 
 ---
@@ -128,9 +127,9 @@ Et c'est aussi le cas pour l'API ou on peut faire une opération booléenne dire
 J'ai parlé tout à l'heure du fait que SALOME peut etre utilisé avec des scripts python. L'integration de ce plugin dans le dump study renforce encore plus cette capacité
 Le **dump study** est une fonctionnalité de SALOME qui enregistre automatiquement toutes les actions de l'utilisateur dans l'interface graphique sous forme de script Python — ce qui permet de rejouer des opérations sans interaction manuelle.
 
-On avait un petit problème dans le dump qui enregistrait des imports et faisait des lignes de codes inutiles, ce qui rendait le script inutilisable.
+On avait un petit problème dans le dump, il enregistrait les importations des fichiers temporaires. Mais vu que à présent ces fichiers était nettoyé après l'opération, le script produit était inutilisable.
 
-Donc j'ai mis en pause l'enregistrement pendant ces étapes intermédiaires et j'injecte directement des appels API propres dans le dump. Résultat : les actions de l'interface sont maintenant enregistrées comme des commandes API lisibles et rejouables. Cela **augmente l'independance entre le GUI et python API** et permet donc à l'utilisateur de jouer avec le script et le relancer comme il le souhaite.
+Donc j'ai mis en pause l'enregistrement pendant ces étapes intermédiaires et j'injecte directement des appels API propres dans le dump pour chaque opération booléenne réalisée. Résultat : les actions de l'interface sont maintenant enregistrées comme des commandes API lisibles et rejouables. Cela **augmente l'independance entre le GUI et python API** et permet donc à l'utilisateur de jouer avec le script et le relancer comme il le souhaite.
 Comme on peut le voir ici un extrait d'un dump study que j'ai fait ou on remarque 3 opérations booléennes que j'ai fait dans l'interface bien enregistrés comme commandes python, et on remarque le .GetMesh fait automatiquement sur des objets SALOME, et sur le intersection_1 on le voit pas car c'est déja un objet python.
 
 ---
@@ -138,10 +137,10 @@ Comme on peut le voir ici un extrait d'un dump study que j'ai fait ou on remarqu
 ## SLIDE 14 — Cas d'usage scientifiques
 **⏱ ~1 minute**
 
-Passons aux cas d'usage scientifiques, pourquoi fait on des opérations booléennes sur maillage? Les opérations booléennes sur les maillages répondent à un besoin réel en simulation numérique. Elles sont particulièrement utiles quand il n'existe pas de modèle CAO disponible — par exemple avec des données tomographiques. L'idée ici est de voir comment on peut intégrer les opérations booléennes à la place d'une partie de ce que fait l'outil commercial MG-Cleaner.
+Passons aux cas d'usage scientifiques, pourquoi fait on des opérations booléennes sur maillage? C'est quoi l'interet? Les opérations booléennes sur les maillages répondent à un besoin réel en simulation numérique. Elles sont particulièrement utiles quand il n'existe pas de modèle CAO disponible — par exemple avec des données tomographiques. Jusqu'à présent on faisait ce type d'opération avec l'outil commercial MG-Cleaner, donc on essaye de voir comment on peut passer à l'utilisation de ce plugin.
 
 Deux exemples concrets ou ça pourrait etre utiles :
-- **Batteries lithium-ion** : On peut faire ici des opérations booléennes entre les composants d'une cellule, qui sont chacun coloré et identifié individuellement pour des simulations de stockage d'énergie.
+- **Batteries lithium-ion** : On peut faire ici des opérations booléennes entre les composants d'une cellule, qui sont chacun coloré pour des simulations de stockage d'énergie.
 - **Béton et agrégats** : Ou encore dans l'intersection d'un maillage surfacique cylindrique avec des agrégats de béton, pour modéliser le comportement mécanique de matériaux composites. Ici on fait le clipping pour visualiser le volume intérieur.
 
 ---
