@@ -45,14 +45,17 @@ Maintenant le workflow. Pour faire une simulation numérique, on suit générale
 
 ## SLIDE 6 - My contributions in numbers
 **⏱ ~1 minute 30 secondes**
-Maintenant qu'on a définit le contexte de mon apprentissage, présenant le CEA, SALOME, avant de vous présenter le détail des travaux, si vous devez retenir une slide de cette présentation, c'est celle ci. Elle représente ce que j'ai contribué informatiquement à la plateforme SALOME. En haut vous voyez ma courbe d'activité sur l'année, qui représente le nombre de commit que j'ai fait. En rouge le MeshBooleanPlugin, en bleu le PolyMeshPlugin. Les zones grises sont mes périodes à l'école — on voit clairement le rythme de l'alternance avec les pics de commits lors des périodes en entreprise, et les creux à zéro pendant l'école. Ce graphe montre aussi comment j'ai organisé mon année. Le premier trimestre entièrement consacré au MeshBooleanPlugin — montée en compétence sur l'environnement SALOME, puis contributions progressives jusqu'à la pull request. Le deuxième trimestre pareil sur le PolyMeshPlugin. Une organization parfaite qui m'a permis de monter en compétence progressivement.
+Avant de vous présenter le détail des travaux, si vous devez retenir une slide de cette présentation, c'est celle ci. Elle représente ce que j'ai contribué informatiquement à la plateforme SALOME. En haut vous voyez ma courbe d'activité sur l'année, qui représente le nombre de commit que j'ai fait. En rouge le MeshBooleanPlugin, en bleu le PolyMeshPlugin. Les zones grises sont mes périodes à l'école — on voit clairement le rythme de l'alternance avec les pics de commits lors des périodes en entreprise, et les creux à zéro pendant l'école. Ce graphe montre aussi comment j'ai organisé mon année. Le premier trimestre entièrement consacré au MeshBooleanPlugin — montée en compétence sur l'environnement SALOME, puis contributions progressives jusqu'à la pull request. Le deuxième trimestre pareil sur le PolyMeshPlugin. Une organization parfaite qui m'a permis de monter en compétence progressivement.
 En bas, le nombre de lignes de code que j'ai écrit par langage — majoritairement Python, C++, et du CMake pour la compilation. En résumé 21 commits, 2 plugins développés, 2 PR soumises et intégrées, environ 1450 lignes de code integré dans la base de SALOME en 16 semaines de travail effectif.
 
-## SLIDE 7 — Section 2 : Premier trimestre
+## SLIDE 7 — Agenda
+Maintenant qu'on a compris le contexte de mon apprentissage, présenant le CEA, SALOME, on peut attaquer les détails techniques. D'abord je présenterai les travaux fait sur le meshbooleanplugin en détail, puis je parlerai sur ceux fait sur polymeshplugin plus birèvement pour respecter le temps, et je terminerai avec un bilan et des perspectives pour la suite.
+
+## SLIDE 8 — Section 1 : Premier trimestre
 *(slide de transition)*
 ---
 
-## SLIDE 8 — MeshBooleanPlugin – Vue d'ensemble
+## SLIDE 9 — MeshBooleanPlugin – Vue d'ensemble
 **⏱ ~1 min 30**
 
 Donc on va passer au travaux accompli pendant le premier trimestre en commençant par une présentation du meshbooleanplugin
@@ -69,14 +72,14 @@ Mon travail a consisté à corriger tout ça.
 
 ---
 
-## SLIDE 9 — Types d'opérations booléennes
+## SLIDE 10 — Types d'opérations booléennes
 **⏱ ~45 secondes**
 
 Avant d'entrer dans les détails techniques, je vais vous montrer une illustration concrète de ce que fait le plugin. On part dans cet exemple de deux maillage tetra simple, deux cubes partiellement superposés. On peut alors calculer leur **union** — les deux réunis en un seul maillage —, leur **intersection** — uniquement la partie commune —, ou leur **différence** — l'un soustrait de l'autre qui peut donner un différent résultat en fonction de comment les deux maillages sont choisis. En l'occurence ici, si on inversait le choix des maillage, on aurait eu ça.
 
 ---
 
-## SLIDE 10 — Bouton Annuler – Premier défi technique
+## SLIDE 11 — Bouton Annuler – Premier défi technique
 **⏱ ~2 min 30**
 
 Maintenant passons à la première tache réelle que j'ai accompli, le bouton cancel.
@@ -91,7 +94,7 @@ Et par la suite mes changements ont pu etre intégré dans la branche master de 
 
 ---
 
-## SLIDE 11 — API Python & Indépendance de la GUI
+## SLIDE 12 — API Python & Indépendance de la GUI
 **⏱ ~2 minutes**
 
 Directement après j'ai enchainé dans le meme plugin sur la création d'une API et le couplage entre l'interface graphique et la logique algorithmique.
