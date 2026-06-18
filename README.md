@@ -12,7 +12,7 @@
 # Apprenticeship at CEA Paris-Saclay — SALOME platform
 
 3-year software engineering apprenticeship at CEA Paris-Saclay (DES/ISAS/SGLS/LESIM),
-combined with an engineering degree at Polytech Paris-Saclay (Computer Science & Applied Mathematics).
+combined with an engineering degree at Polytech Paris-Saclay (Software engineering & Applied Mathematics).
 
 My work focuses on the development and modernization of meshing plugins for the
 [SALOME](https://www.salome-platform.org) open-source simulation platform,
@@ -23,9 +23,9 @@ co-developed by CEA and EDF since 2000.
 ## Context
 
 SALOME is an open-source platform for numerical simulation pre and post-processing.
-It covers the full simulation workflow: CAD geometry, mesh generation, solver coupling and visualization.
+It covers the full simulation workflow: CAD geometry, mesh generation, and visualization after doing solver coupling.
 
-I work exclusively in the **SMESH** module — the meshing module — where I develop and maintain plugins
+I worked exclusively in the **SMESH** module — the meshing module — where I developed and maintained plugins
 that extend SALOME's meshing capabilities.
 
 ---
