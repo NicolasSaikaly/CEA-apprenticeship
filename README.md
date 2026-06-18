@@ -60,4 +60,4 @@ No proprietary code or sensitive CEA data is included.
 ## Contact
 
 Nicolas SAIKALY
-[LinkedIn](https://www.linkedin.com/in/nicolas-saikaly-8a787935a) · nicolas.saikaly@cea.fr
+[LinkedIn](https://www.linkedin.com/in/nicolas-saikaly-8a787935a) · nicolas.saikaly@cea.fr — nicolas.saikaly@universite-paris-saclay.fr
