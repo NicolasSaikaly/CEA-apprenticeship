@@ -1,61 +1,62 @@
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <img src="assets/logoCEA.png" height="80" align="left" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/logoSalome.gif" height="80" style="max-width: 40%; object-fit: contain;" />
-  <img src="assets/logopolytech.webp" height="80" align="right"/>
+<div align="center">
+  <img src="assets/logoCEA.png" height="70"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/logoSalome.gif" height="70"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/logopolytech.webp" height="70"/>
 </div>
 
-<br />
+<br/>
 
-<br />
-# 3-Year Apprenticeship at CEA Paris-Saclay | SALOME platform development
+# Apprenticeship at CEA Paris-Saclay — SALOME platform
 
-Welcome to this repository documenting my 3-year apprenticeship at CEA (Commissariat à l'énergie atomique et aux énergies alternatives)
+3-year software engineering apprenticeship at CEA Paris-Saclay (DES/ISAS/SGLS/LESIM),
+combined with an engineering degree at Polytech Paris-Saclay (Computer Science & Applied Mathematics).
 
-My work focuses on the development and optimization of the SALOME platform
-
-# 📌 Overview
-* Company : CEA Paris-Saclay DES/ISAS/DM2S/SGLS/LESIM
-* Role : Software engineering apprentice
-* Debut : 01/09/2025
-* Core technology : SALOME platform https://www.salome-platform.org/?lang=fr (Open-source integration platform )
+My work focuses on the development and modernization of meshing plugins for the
+[SALOME](https://www.salome-platform.org) open-source simulation platform,
+co-developed by CEA and EDF since 2000.
 
 ---
 
-## 🛠 Project context : The SALOME platform
-SALOME is an open-source middleware used for pre and post processing in numerical simulation.
-It provides a generic environment for:
-* CAD modeling (GEOM https://docs.salome-platform.org/latest/gui/GEOM/index.html/ SHAPER https://docs.salome-platform.org/latest/gui/SHAPER/General/Introduction.html)
-* MESH generation (SMESH https://docs.salome-platform.org/latest/gui/SMESH/smesh_module.html)
-* Calculation scheme management
-* Visualization (PARAVIS https://docs.salome-platform.org/latest/dev/PARAVIS/index.html)
+## Context
 
-## 📈 Roadmap
+SALOME is an open-source platform for numerical simulation pre and post-processing.
+It covers the full simulation workflow: CAD geometry, mesh generation, solver coupling and visualization.
 
-### Year 1 : Discovery and integration
-* Training on the SALOME architecture and internal tools/modules.
-* First contribution to the SMESH module using python
-* First big job on a specific plugin in the SMESH module
+I work exclusively in the **SMESH** module — the meshing module — where I develop and maintain plugins
+that extend SALOME's meshing capabilities.
 
-## 📂 Detailed Documentation
-* [Click here to view Year 1 Details (2025-2026)](CEA2025-2026.md)
+---
 
-## 💻 Technical Stack
+## Years
 
-| Category | Technologies |
+| Year | Period | Focus |
+|------|--------|-------|
+| [Year 1 (2025–2026)](CEA2025-2026.md) | Sep 2025 – Aug 2026 | MeshBooleanPlugin & PolyMeshPlugin |
+| Year 2 (2026–2027) | Sep 2026 – Aug 2027 | Prismatic layer plugin (code_saturne) |
+| Year 3 (2027–2028) | Sep 2027 – Aug 2028 | Hexahedral meshing workflow |
 
-| **Languages** | Python, C++, Bash |
+---
 
-| **Libraries** | Qt, VTK, Open CASCADE, salome |
+## Technical stack
 
-| **Tools** | Git, CMake |
+| | |
+|---|---|
+| Languages | Python, C++, CMake |
+| Frameworks | PyQt, MEDCoupling, Geogram, OpenFOAM |
+| Tools | Git, GitHub, Linux (Ubuntu) |
 
-| **Environment** | Linux (Ubuntu) |
+---
 
-# 🔒 Confidentiality Notice
+## Confidentiality
 
-This repository contains a general overview of my apprenticeship and public-facing developments. Any proprietary code or sensitive data related to CEA projects are strictly excluded according to the company's security policy.
+This repository contains only public-facing information.
+No proprietary code or sensitive CEA data is included.
 
-# 📫 Contact
+---
 
-Nicolas SAIKALY - www.linkedin.com/in/nicolas-saikaly-8a787935a - nicolas.saikaly@cea.fr | nicolas.saikaly@universite-paris-saclay.fr
+## Contact
+
+Nicolas SAIKALY
+[LinkedIn](https://www.linkedin.com/in/nicolas-saikaly-8a787935a) · nicolas.saikaly@cea.fr
