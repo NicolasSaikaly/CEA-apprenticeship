@@ -46,7 +46,7 @@ that extend SALOME's meshing capabilities.
 |---|---|
 | Languages | Python, C++, CMake |
 | Frameworks | PyQt, MEDCoupling, Geogram, OpenFOAM |
-| Tools | Git, GitHub, Linux (Ubuntu) |
+| Tools | Git, GitHub, SAT, Linux (Ubuntu) |
 
 ---
 
