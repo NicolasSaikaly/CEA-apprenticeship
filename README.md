@@ -34,9 +34,9 @@ that extend SALOME's meshing capabilities.
 
 | Year | Period | Focus |
 |------|--------|-------|
-| [Year 1 (2025–2026)](CEA2025-2026.md) | Sep 2025 – Aug 2026 | MeshBooleanPlugin & PolyMeshPlugin |
-| Year 2 (2026–2027) | Sep 2026 – Aug 2027 | Prismatic layer plugin (code_saturne) |
-| Year 3 (2027–2028) | Sep 2027 – Aug 2028 | Hexahedral meshing workflow |
+| [Year 1 (2025–2026)](CEA2025-2026.md) | Sep 2025 – June 2026 | MeshBooleanPlugin & PolyMeshPlugin |
+| Year 2 (2026–2027) | July 2026 – June 2027 | TBD |
+| Year 3 (2027–2028) | July 2027 – Aug 2028 | TBD |
 
 ---
 
