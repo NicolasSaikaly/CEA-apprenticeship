@@ -1,9 +1,7 @@
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <img src="assets/logoCEA.png" height="80" align="left" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/logoSalome.gif" height="80" style="max-width: 40%; object-fit: contain;" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/logopolytech.webp" height="80" align="right"/>
+<div style="display: flex; justify-content: space-evenly; align-items: center;">
+  <img src="assets/logoCEA.png" height="80"/>
+  <img src="assets/logoSalome.gif" height="80"/>
+  <img src="assets/logopolytech.webp" height="80"/>
 </div>
 <br />
 <br />
