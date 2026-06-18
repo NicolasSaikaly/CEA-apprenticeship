@@ -1,10 +1,6 @@
-<div style="display: flex; justify-content: space-evenly; align-items: center;">
-  <img src="assets/logoCEA.png" height="80"/>
-  <img src="assets/logoSalome.gif" height="80"/>
-  <img src="assets/logopolytech.webp" height="80"/>
-</div>
-<br />
-<br />
+| | | |
+|:---:|:---:|:---:|
+| <img src="assets/logoCEA.png" height="80"/> | <img src="assets/logoSalome.gif" height="80"/> | <img src="assets/logopolytech.webp" height="80"/> |
 
 # Apprenticeship at CEA Paris-Saclay — SALOME platform
 
