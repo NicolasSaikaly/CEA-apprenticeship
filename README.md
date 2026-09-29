@@ -41,6 +41,8 @@ SALOME is an open-source platform for numerical simulation pre- and post-process
 | MeshBooleanPlugin — Complete dump study on boolean operations | [#26](https://github.com/SalomePlatform/meshbooleanplugin/pull/26) |
 | PolyMeshPlugin — cross-platform refactoring & Geogram pipeline | Internal CEA/EDF repository |
 
+> Contributions to SalomePlatform were made from my work account [@Nicolas-Saikaly](https://github.com/Nicolas-Saikaly).
+
 ---
 
 ## Timeline
